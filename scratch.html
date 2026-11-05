@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2.0</title>
+
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #222;
+        }
+
+        ruffle-player {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <ruffle-player></ruffle-player>
+
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+
+            document.querySelector("ruffle-player").replaceWith(player);
+
+            player.style.width = "100vw";
+            player.style.height = "100vh";
+
+            player.load("Scratch.swf");
+        });
+    </script>
+
+</body>
+</html>
